@@ -57,6 +57,7 @@ namespace MembershipInlamningsUppgift
 
             while (keepGoing)
             {
+                Console.WriteLine(" ");
                 Console.WriteLine("This is our meny: ");
 
                 for (int i = 0; i < mainMeny.Length; i++)
@@ -71,10 +72,16 @@ namespace MembershipInlamningsUppgift
                 switch (userChoice)
                 {
                     case 1:
+                        //ShowMembers visar nuvarande medlemmar samt fakta kring varje medlem
+                        ShowMembers(membersList);
                         break;
                     case 2:
+                        //CreateNewMember ger möjligheten att skapa en ny medlem
+                        CreateNewMember(membersList);
                         break;
                     case 3:
+                        //DeleteMember listar nuvarande medlemmar samt ger möjligheten att ta bort en medlem.
+                        DeleteMember(membersList);
                         break;
                     case 4:
                         Console.WriteLine("Have a nice day!");
@@ -86,17 +93,64 @@ namespace MembershipInlamningsUppgift
                 }
             }
         }
-        static void ShowMembers()
+        static void ShowMembers(List<Member> membersList)
         {
+            Console.WriteLine("These are our current members: ");
+
+            foreach(var member in membersList)
+            {
+                Console.WriteLine($"{member.Name} - \"{member.MainReason}\"");
+                Console.WriteLine($"Age: {member.Age}, Birthday: {member.Birthday} favourite Food: {member.FavouriteFood}, favourite band: {member.FavouriteBand}, favourite movie: {member.FavouriteMovie}, loves: {member.Loves}, hates: {member.Hates}, sign: {member.Sign} and superpower: {member.SuperPower}");
+                Console.WriteLine(" ");
+            }
             
         }
-        static void CreateNewMember()
+        static void CreateNewMember(List<Member> membersList)
         {
+            Console.WriteLine("Join the club! answer the following questions");
+            Console.Write("What's your name?: ");
+            string name = Console.ReadLine();
+            Console.Write("What is your main reason for programming?: ");
+            string mainReason = Console.ReadLine();
+            Console.Write("How old are you?: ");
+            int age = int.Parse(Console.ReadLine());
+            Console.Write("When's your birthday? Enter which day and month: ");
+            string birthday = Console.ReadLine();
+            Console.Write("What's your favourite food?: ");
+            string favouriteFood = Console.ReadLine();
+            Console.Write("Your favourite band?: ");
+            string favouriteBand = Console.ReadLine();
+            Console.Write("Favourite movie?: ");
+            string favouriteMovie = Console.ReadLine();
+            Console.Write("What do you love?: ");
+            string loves = Console.ReadLine();
+            Console.Write("and hate?: ");
+            string hates = Console.ReadLine();
+            Console.Write("What's your sign?: ");
+            string sign = Console.ReadLine();
+            Console.Write("And lastly, what is your superpower?: ");
+            string superPower = Console.ReadLine();
+
+            Member Newbie = new Member(name, mainReason, age, birthday, favouriteFood, favouriteBand, favouriteMovie, loves, hates, sign, superPower);
+
+            Console.WriteLine(" ");
+            membersList.Add(Newbie);
+            Console.WriteLine($"Member {Newbie.Name} joined the club, welcome!");
 
         }
-        static void DeleteMember()
+        static void DeleteMember(List<Member> membersList)
         {
+            for(int i = 0; i < membersList.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}.{membersList[i].Name}");
+            }
 
+            Console.WriteLine($"Select which member you'd like to remove by entering for example \"1\": ");
+            int index = int.Parse(Console.ReadLine());
+            index = index - 1;
+
+            Console.WriteLine($"Member {membersList[index].Name} was removed");
+            membersList.RemoveAt(index);
         }
     }
 }
