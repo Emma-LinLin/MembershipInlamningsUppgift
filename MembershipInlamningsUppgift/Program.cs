@@ -38,6 +38,7 @@ namespace MembershipInlamningsUppgift
         }
         static void MainMeny()
         {
+            //Skapade upp nya objekt utav klassen "Member".
             Member Andrei = new Member("Andrei", "Problemlösning", 26, "12e Januari", "Carbonara", "Two Steps From Hell", "Lord of the rings", "Resa", "Oliver", "Stenbock", "Instant olive detection");
             Member Jesper = new Member("Jesper", "Frihet", 28, "29e Maj", "Lammracks", "Lars Winnerbäck", "Catch me if you can", "De enkla sakerna", "Folk som filmar på konserter", "Tvilling", "Teleportering");
             Member Leroy = new Member("Leroy", "Dynamisk", 32, "22e Oktober", "Pizza", "We the best music", "Matrix", "Choklad", "Kaviar", "Våg", "Flyga");
