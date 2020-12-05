@@ -1,1 +1,39 @@
-﻿
+﻿2020-12-02
+Jag började med att skapa en skiss för hur jag ville att mitt program skulle se ut, samt ett separat program för att få kladda ned mina tankar, 
+på så sätt hade jag förbestämt mina variabel- och metodnamn. Jag försöker alltid att namnge både variabler och metoder så att de beskriver vad jag vill att
+de ska innehålla eller genomföra.
+
+2020-12-04
+Jag började med att skapa mitt program för hur tillgängligheten skulle fungera, i detta fall behöver användaren ange korrekt sträng för att få tillgång till huvudmenyn.
+Jag implementerade att användaren skulle få tre försök på sig innan programmet avslutas om felaktig sträng angivits och skapade en metod för att kontrollera svaret.
+Vid rätt svar kallas metoden för MainMeny. 
+
+2020-12-04
+I MainMeny har jag valt att lägga in alternativen i en Array, då jag visste hur många platser jag ville ha i min meny, i detta fall 4 stycken då jag även 
+ville lägga till möjligheten att användaren kan lägga till sig själv som medlem. Jag använde mig utav en for-loop för att loopa igenom alternativen då det blir
+lättare att hålla koll på vilket index du är på i iterationen, för användarvänlighet valde jag att ta med "+1" så att inte alternativen börjar på 0. Därefter
+möjligheten att ange vad man skulle vilja göra baserat på menyval, användarens val skickas sedan vidare i en switch-sats för att lotsa dem vidare.
+
+Jag skapade upp en klass "Members", denna klass skulle innehålla 10 generella fakta om alla medlemmar, jag skapade därav 10 privata strängar och integer, 
+för att lagra datan för varje medlem. Jag valde att endast ge användaren "läsmöjlighet", genom att skapa lika många propertys med Get-egenskap. 
+
+Jag valde att lägga till en konstruktor som tar in samtliga parametrar för åtkomlighet vid skapandet av en ny instans inom huvudprogrammet.
+
+Skapade sedan separata metoder för möjligheten att introduceras till alla nuvarande medlemmar, lägga till sig själv som medlem, ta bort en medlem,
+eller att "logga ut" - där programmet avslutas.
+
+Metod ShowMembers() - för denna metod har du möjlighet att se alla nuvarande medlemmar, i detta fall valde jag att använda mig utav en foreach-loop för att gå 
+igenom medlemmarna en för en, i detta fall kändes foreach mer passande. 
+
+Metod CreateNewMember() - ger en möjlighet för användaren att lägga till sig själv som medlem genom att svara på samma frågor som övriga medlemmar har. 
+den nya medlemmen sparas sedan i en lista tillsammans med de andra. 
+
+Metod DeleteMember() - ger en möjlighet för användaren att ta bort en medlem, då listan "memberList" är 0 indexerad valde jag att sätta nummergivning för iterationen på
++1, så att det blir tydligt, för att valet ska stämma överens med användarens val av nummer, så behövde jag istället ange index till -1.
+Detta för att försäkra att korrekt medlem blir borttagen. Här kändes en for-loop mest lämplig.
+
+2020-12-05
+Jag valde att lägga till ytterligare en metod: 
+
+ParseUserInput() - Konverterar användarens input från sträng till nummer, om lyckas så retuneras talet, om inte så ombedes användaren att prova igen. Detta för att försöka
+undvika fel vid inmatning under run-time. Metoden återanvänds på samtliga ställen där användaren ombedes att fylla i en uppgift eller göra ett val baserat på nummerordning.
