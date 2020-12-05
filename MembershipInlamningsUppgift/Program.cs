@@ -67,7 +67,8 @@ namespace MembershipInlamningsUppgift
 
                 Console.WriteLine(" ");
                 Console.WriteLine("What would you like to do?: ");
-                int userChoice = int.Parse(Console.ReadLine());
+                //ParseUserInput försöker konvertera användarens input ett nummer, om den lyckas så retuneras numret, om inte så ombedes användaren att försöka igen.
+                int userChoice = ParseUserInput();
 
                 switch (userChoice)
                 {
@@ -76,7 +77,7 @@ namespace MembershipInlamningsUppgift
                         ShowMembers(membersList);
                         break;
                     case 2:
-                        //CreateNewMember ger möjligheten att skapa en ny medlem
+                        //CreateNewMember ger möjligheten att skapa en ny medlem och addera den till listan av medlemmar
                         CreateNewMember(membersList);
                         break;
                     case 3:
@@ -91,6 +92,24 @@ namespace MembershipInlamningsUppgift
                         Console.WriteLine("Not a valid option");
                         break;
                 }
+            }
+        }
+        static int ParseUserInput()
+        {
+            int userInput;
+
+            while (true)
+            {
+                try
+                {
+                    userInput = int.Parse(Console.ReadLine());
+                    return userInput;
+                }
+                catch
+                {
+                    Console.WriteLine("Only numbers please! Try again");
+                }
+
             }
         }
         static void ShowMembers(List<Member> membersList)
@@ -113,7 +132,7 @@ namespace MembershipInlamningsUppgift
             Console.Write("What is your main reason for programming?: ");
             string mainReason = Console.ReadLine();
             Console.Write("How old are you?: ");
-            int age = int.Parse(Console.ReadLine());
+            int age = ParseUserInput();
             Console.Write("When's your birthday? Enter which day and month: ");
             string birthday = Console.ReadLine();
             Console.Write("What's your favourite food?: ");
@@ -146,7 +165,7 @@ namespace MembershipInlamningsUppgift
             }
 
             Console.WriteLine($"Select which member you'd like to remove by entering for example \"1\": ");
-            int index = int.Parse(Console.ReadLine());
+            int index = ParseUserInput();
             index = index - 1;
 
             Console.WriteLine($"Member {membersList[index].Name} was removed");
