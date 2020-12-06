@@ -36,4 +36,10 @@ Detta för att försäkra att korrekt medlem blir borttagen. Här kändes en for
 Jag valde att lägga till ytterligare en metod: 
 
 ParseUserInput() - Konverterar användarens input från sträng till nummer, om lyckas så retuneras talet, om inte så ombedes användaren att prova igen. Detta för att försöka
-undvika fel vid inmatning under run-time. Metoden återanvänds på samtliga ställen där användaren ombedes att fylla i en uppgift eller göra ett val baserat på nummerordning.
+undvika fel vid inmatning under run-time. Metoden återanvänds på samtliga ställen där användaren ombedes att fylla i en uppgift eller göra ett val baserat på nummer.
+
+2020-12-06
+Skapade metod GenerateMembers() - metoden skapar nya instanser(objekt) för varje medlem av klassen Members samt retunerar lista till MainMeny()
+
+Summering: Jag tyckte denna uppgift var rolig! Hade jag gjort om det så hade jag nog testat att använda mig utav Arv samt skapat upp separata klasser för exempelvis 
+juniora samt seniora medlemmar som ärver egenskaperna utav basklassen Member. 

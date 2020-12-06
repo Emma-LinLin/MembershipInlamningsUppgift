@@ -39,7 +39,7 @@ namespace MembershipInlamningsUppgift
         static void MainMeny()
         {
             //GenerateMembers skapar upp nya instanser(objekt) av klassen Member samt returnerar lista
-            List<Member> membersList = new List<Member>(GenerateMembers());
+            List<Member> membersList = GenerateMembers();
 
 
             string[] mainMeny = new string[] { "Meet the members", "Join the club!", "Remove a member", "Log out" };
@@ -174,10 +174,18 @@ namespace MembershipInlamningsUppgift
 
             Console.WriteLine($"Select which member you'd like to remove by entering for example \"1\": ");
             int index = ParseUserInput();
+
             index = index - 1;
 
-            Console.WriteLine($"Member {membersList[index].Name} was removed");
-            membersList.RemoveAt(index);
+            if (index <= membersList.Count)
+            {
+                Console.WriteLine($"Member {membersList[index].Name} was removed");
+                membersList.RemoveAt(index);
+            }
+            else
+            {
+                Console.WriteLine("Member out of range.");
+            }
         }
     }
 }
