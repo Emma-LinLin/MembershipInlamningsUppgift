@@ -38,18 +38,8 @@ namespace MembershipInlamningsUppgift
         }
         static void MainMeny()
         {
-            //Skapade upp nya objekt utav klassen "Member".
-            Member Andrei = new Member("Andrei", "Problemlösning", 26, "12e Januari", "Carbonara", "Two Steps From Hell", "Lord of the rings", "Resa", "Oliver", "Stenbock", "Instant olive detection");
-            Member Jesper = new Member("Jesper", "Frihet", 28, "29e Maj", "Lammracks", "Lars Winnerbäck", "Catch me if you can", "De enkla sakerna", "Folk som filmar på konserter", "Tvilling", "Teleportering");
-            Member Leroy = new Member("Leroy", "Dynamisk", 32, "22e Oktober", "Pizza", "We the best music", "Matrix", "Choklad", "Kaviar", "Våg", "Flyga");
-            Member Ma = new Member("MA", "Skapande", 29, "13e Mars", "Rårakor", "Modest Mouse", "Snatch", "Höst/Vinter", "Banan", "Fisk", "Mrs.Hindsight");
-            Member Gurra = new Member("Gurra", "Kreativitet", 33, "17e November", "Tacos", "Berliner Philharmoniker", "Any Star Wars", "J.S Bach", "Schlager", "Skorpion", "Tala med hundvalpar");
-            Member Jonna = new Member("Jonna", "Tjurskallig", 30, "5e Februari", "Pizza", "Full of hell", "Interstellar", "Musik", "Kött", "Vattuman", "Odödlig");
-            Member Linus = new Member("Linus", "Få ett riktigt skoj jobb", 27, "17e Juli", "Fisksoppa", "Jack Moy", "The secret life of walter mitty", "Banan", "Senap", "Kräfta", "Andas under vatten");
-            Member Nils = new Member("Nils", "Roligt", 21, "15e Februari", "Pannkakor", "Beach Boys", "American Psycho", "Snö", "Slask", "Fisk", "Räkna med fingrarna");
-            Member Yulrok = new Member("Yulrok", "Biljett till digital nomad-livet", 38, "23e April", "Müsli", "Morcheeba", "The green book", "Ost", "Slöseri", "Oxen", "Tankeöverföring");
-
-            List<Member> membersList = new List<Member>() { Andrei, Jesper, Leroy, Ma, Gurra, Jonna, Linus, Nils, Yulrok };
+            //GenerateMembers skapar upp nya instanser(objekt) av klassen Member samt returnerar lista
+            List<Member> membersList = new List<Member>(GenerateMembers());
 
 
             string[] mainMeny = new string[] { "Meet the members", "Join the club!", "Remove a member", "Log out" };
@@ -95,6 +85,23 @@ namespace MembershipInlamningsUppgift
                 }
             }
         }
+        static List<Member> GenerateMembers()
+        {
+            Member Andrei = new Member("Andrei", "Problemlösning", 26, "12e Januari", "Carbonara", "Two Steps From Hell", "Lord of the rings", "Resa", "Oliver", "Stenbock", "Instant olive detection");
+            Member Jesper = new Member("Jesper", "Frihet", 28, "29e Maj", "Lammracks", "Lars Winnerbäck", "Catch me if you can", "De enkla sakerna", "Folk som filmar på konserter", "Tvilling", "Teleportering");
+            Member Leroy = new Member("Leroy", "Dynamisk", 32, "22e Oktober", "Pizza", "We the best music", "Matrix", "Choklad", "Kaviar", "Våg", "Flyga");
+            Member Ma = new Member("MA", "Skapande", 29, "13e Mars", "Rårakor", "Modest Mouse", "Snatch", "Höst/Vinter", "Banan", "Fisk", "Mrs.Hindsight");
+            Member Gurra = new Member("Gurra", "Kreativitet", 33, "17e November", "Tacos", "Berliner Philharmoniker", "Any Star Wars", "J.S Bach", "Schlager", "Skorpion", "Tala med hundvalpar");
+            Member Jonna = new Member("Jonna", "Tjurskallig", 30, "5e Februari", "Pizza", "Full of hell", "Interstellar", "Musik", "Kött", "Vattuman", "Odödlig");
+            Member Linus = new Member("Linus", "Få ett riktigt skoj jobb", 27, "17e Juli", "Fisksoppa", "Jack Moy", "The secret life of walter mitty", "Banan", "Senap", "Kräfta", "Andas under vatten");
+            Member Nils = new Member("Nils", "Roligt", 21, "15e Februari", "Pannkakor", "Beach Boys", "American Psycho", "Snö", "Slask", "Fisk", "Räkna med fingrarna");
+            Member Yulrok = new Member("Yulrok", "Biljett till digital nomad-livet", 38, "23e April", "Müsli", "Morcheeba", "The green book", "Ost", "Slöseri", "Oxen", "Tankeöverföring");
+
+            List<Member> membersList = new List<Member>() { Andrei, Jesper, Leroy, Ma, Gurra, Jonna, Linus, Nils, Yulrok };
+
+            return membersList;
+
+        }
         static int ParseUserInput()
         {
             int userInput;
@@ -106,7 +113,7 @@ namespace MembershipInlamningsUppgift
                     userInput = int.Parse(Console.ReadLine());
                     return userInput;
                 }
-                catch
+                catch(Exception)
                 {
                     Console.WriteLine("Only numbers please! Try again");
                 }
